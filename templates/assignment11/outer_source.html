@@ -1,0 +1,39 @@
+{% extends 'Base.html' %}
+
+{% block title %} Assigment 11
+{% endblock %}
+
+{% block tohen %}
+
+    <h2> get users from backend</h2>
+      <form action="/outer_source_backend"  method="get">
+        User id: <input name="user_id" type="text">
+       <input type="submit" name="search" value="search">
+    </form>
+
+    {% if user %}
+        <h4>Name: {{ user.data.first_name }} {{ user.data.last_name }} </h4>
+        <img src="{{ user.data.avatar }}" alt="pic"> <br>
+          <a href="mailto:${user.data.email}">Send Email</a>
+    {% endif %}
+    <hr>
+     <h2> get users from fronted</h2>
+    <form action="/outer_source_front"  method="post">
+        User id: <input name="user_id" type="text">
+       <input type="submit" name="search" value="search">
+    </form>
+    {% if id  %}
+        <main >
+            <body onload="getUsers({{ id }})">
+
+            </body>
+        </main>
+    {% endif %}
+
+    <script src="/static/cv.js"> </script>
+
+
+
+{% endblock %}
+
+
